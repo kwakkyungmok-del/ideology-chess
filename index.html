@@ -35,6 +35,17 @@ input:focus{border-color:var(--gold);box-shadow:0 0 0 3px #d6b87520}
 .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:600;background:#15171b}tr:last-child td{border-bottom:0}.empty{padding:20px;text-align:center;color:var(--muted)}
 footer{text-align:center;color:#747986;font-size:12px;margin-top:32px}
 @media(max-width:760px){.layout{grid-template-columns:1fr}.wrap{width:min(100% - 22px,560px);padding-top:18px}header{margin-bottom:28px}.panel{padding:18px}.hero{margin-bottom:24px}}
+.site-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
 </style>
 </head>
 <body>
@@ -46,7 +57,10 @@ footer{text-align:center;color:#747986;font-size:12px;margin-top:32px}
 
   <section class="hero">
     <div class="eyebrow">THINK. MOVE. CHALLENGE.</div>
-    <h1>철학이 수를 두다.</h1>
+    <h1 class="site-title">
+  <img src="/favicon.ico" alt="" class="site-logo">
+  IDEOLOGY CHESS
+</h1>
     <p>같은 체스판, 다른 사상. 먼저 계정을 만들고, 철학자들의 대결을 위한 프로필과 레이팅을 준비하자.</p>
   </section>
 
