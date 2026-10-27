@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101114">
+<title>IDEOLOGY CHESS — 철학이 수를 두다</title>
+<style>
+:root{color-scheme:dark;--bg:#101114;--panel:#191b20;--panel2:#20232a;--line:#30343d;--text:#f1f2f5;--muted:#a0a5b1;--gold:#d6b875;--green:#a8d5b5;--red:#ff9c9c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#33303a 0,transparent 50%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
+.wrap{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:28px 0 60px}
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:36px}
+.brand{font-size:13px;letter-spacing:.19em;color:var(--gold);font-weight:800}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.08em;font-weight:500;margin-top:3px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:12px}
+.hero{max-width:760px;margin:0 auto 30px;text-align:center}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.22em;font-weight:700}
+h1{font-size:clamp(36px,7vw,66px);line-height:1.02;letter-spacing:-.055em;margin:14px 0 16px}
+.hero p{color:var(--muted);max-width:580px;margin:0 auto}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.82fr);gap:18px;align-items:start}
+.panel{background:linear-gradient(145deg,#1d2026,#15171b);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 16px 40px #0002}
+.panel h2{font-size:18px;margin:0 0 6px}.sub{font-size:13px;color:var(--muted);margin:0 0 18px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#101114;padding:5px;border-radius:10px;margin-bottom:16px}
+.tabs button{border:0;background:transparent;color:var(--muted);border-radius:7px;padding:9px}.tabs button.active{background:var(--panel2);color:var(--text)}
+.field{display:block;margin:12px 0}.field span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+input{width:100%;background:#101216;border:1px solid var(--line);border-radius:9px;padding:12px 13px;color:var(--text);outline:none}
+input:focus{border-color:var(--gold);box-shadow:0 0 0 3px #d6b87520}
+.primary{width:100%;border:0;border-radius:9px;padding:12px 14px;background:var(--gold);color:#171512;font-weight:800;margin-top:8px}
+.secondary{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;padding:9px 12px}
+.note{font-size:12px;color:var(--muted);margin:14px 0 0}.message{margin-top:13px;font-size:13px;min-height:20px;color:var(--green);overflow-wrap:anywhere}.message.error{color:var(--red)}
+.hidden{display:none!important}.account-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}.avatar{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:#34302a;color:var(--gold);font-size:20px}
+.account-head strong{display:block;font-size:16px}.account-head small{display:block;color:var(--muted);overflow-wrap:anywhere}
+.rating-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.rating{background:#111318;border:1px solid var(--line);border-radius:12px;padding:15px}.rating span{display:block;color:var(--muted);font-size:12px}.rating strong{display:block;font-size:30px;letter-spacing:-.04em;margin:3px 0}.rating small{color:var(--muted);font-size:11px}
+.divider{height:1px;background:var(--line);margin:20px 0}.profile-row{display:flex;gap:8px}.profile-row input{min-width:0}.profile-row button{white-space:nowrap}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:24px 0 12px}.section-title h2{font-size:17px;margin:0}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:600;background:#15171b}tr:last-child td{border-bottom:0}.empty{padding:20px;text-align:center;color:var(--muted)}
+footer{text-align:center;color:#747986;font-size:12px;margin-top:32px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.wrap{width:min(100% - 22px,560px);padding-top:18px}header{margin-bottom:28px}.panel{padding:18px}.hero{margin-bottom:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">IDEOLOGY CHESS<small>PHILOSOPHY MEETS STRATEGY</small></div>
+    <div class="pill" id="connectionPill">연결 설정 필요</div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">THINK. MOVE. CHALLENGE.</div>
+    <h1>철학이 수를 두다.</h1>
+    <p>같은 체스판, 다른 사상. 먼저 계정을 만들고, 철학자들의 대결을 위한 프로필과 레이팅을 준비하자.</p>
+  </section>
+
+  <main class="layout">
+    <section class="panel" id="authPanel">
+      <h2>플레이어 입장</h2>
+      <p class="sub">이메일 계정으로 가입하거나 로그인해.</p>
+      <div class="tabs">
+        <button class="active" id="loginTab" type="button">로그인</button>
+        <button id="signupTab" type="button">회원가입</button>
+      </div>
+      <form id="authForm">
+        <label class="field hidden" id="nicknameField"><span>닉네임 (최대 24자)</span><input id="nickname" maxlength="24" autocomplete="nickname" placeholder="예: 아테네의 부엉이"></label>
+        <label class="field"><span>이메일</span><input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label class="field"><span>비밀번호</span><input id="password" type="password" autocomplete="current-password" minlength="6" required placeholder="6자 이상"></label>
+        <button class="primary" id="submitButton" type="submit">로그인</button>
+      </form>
+      <button class="secondary" id="resetButton" type="button" style="width:100%;margin-top:10px">비밀번호 재설정 이메일 보내기</button>
+      <p class="note">가입 시 이메일 확인이 필요할 수 있어. 실제 배포 전에 Supabase의 Site URL과 Redirect URLs를 설정해 줘.</p>
+      <div class="message" id="authMessage" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="panel hidden" id="accountPanel">
+      <div class="account-head">
+        <div class="avatar">♟</div>
+        <div><strong id="welcomeName">플레이어</strong><small id="accountEmail"></small></div>
+      </div>
+      <h2>내 레이팅</h2>
+      <p class="sub">시작 레이팅은 1200. 실제 대국 결과 반영은 다음 개발 단계에서 연결할 예정이야.</p>
+      <div class="rating-grid">
+        <div class="rating"><span>클래식</span><strong id="classicElo">1200</strong><small id="classicRecord">0전 · 0승 0무 0패</small></div>
+        <div class="rating"><span>이데올로기</span><strong id="ideologyElo">1200</strong><small id="ideologyRecord">0전 · 0승 0무 0패</small></div>
+      </div>
+      <div class="divider"></div>
+      <h2>닉네임 변경</h2>
+      <p class="sub">랭킹에 공개되는 이름이야. 이메일 주소는 공개 프로필에 표시하지 않아.</p>
+      <div class="profile-row"><input id="newNickname" maxlength="24" placeholder="새 닉네임"><button class="secondary" id="saveNickname" type="button">저장</button></div>
+      <div class="message" id="profileMessage" role="status" aria-live="polite"></div>
+      <div class="divider"></div>
+      <button class="secondary" id="logoutButton" type="button">로그아웃</button>
+    </section>
+
+    <section class="panel" id="leaderboardPanel">
+      <div class="section-title" style="margin-top:0"><h2>이데올로기 랭킹</h2><button class="secondary" id="refreshBoard" type="button">새로고침</button></div>
+      <p class="sub">현재 계정 데이터가 연결되면 전체 플레이어의 공개 레이팅을 불러와.</p>
+      <div class="table-wrap">
+        <table><thead><tr><th>#</th><th>플레이어</th><th>ELO</th><th>전적</th></tr></thead><tbody id="leaderboardBody"><tr><td colspan="4" class="empty">Supabase 연결 후 표시돼.</td></tr></tbody></table>
+      </div>
+      <div class="section-title"><h2>개발 로드맵</h2></div>
+      <div style="color:var(--muted);font-size:13px;display:grid;gap:8px">
+        <div>✓ 이메일 회원가입 및 로그인 UI</div>
+        <div>✓ 프로필·레이팅 테이블 연동 기반</div>
+        <div>○ 정식 체스 규칙과 기물 렌더링</div>
+        <div>○ 철학자별 능력·기물 조형</div>
+        <div>○ 서버 검증 기반 ELO 업데이트</div>
+        <div>○ 실시간 온라인 대전</div>
+      </div>
+    </section>
+  </main>
+  <footer>IDEOLOGY CHESS · 초기 인증/프로필 기반 버전</footer>
+</div>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+/*
+  1) Supabase Dashboard > Project Settings > API 에서 Project URL과 publishable key를 복사하세요.
+  2) 아래 두 값을 교체하세요.
+  공개용 publishable/anon 키만 사용하세요. service_role/secret 키는 절대 넣지 마세요.
+*/
+const SUPABASE_URL = "https://dwbykijpiksrvgstdvpf.supabase.co/rest/v1/";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_ZreWIQ-dSoneJaK5Nkwtxw_T39vCm8B";
+
+const $ = (id) => document.getElementById(id);
+const connectionPill = $("connectionPill");
+const authPanel = $("authPanel");
+const accountPanel = $("accountPanel");
+const authMessage = $("authMessage");
+let mode = "login";
+let supabase = null;
+let currentUser = null;
+
+function setMessage(el, message, isError = false) {
+  el.textContent = message || "";
+  el.classList.toggle("error", Boolean(isError));
+}
+function setAuthMode(nextMode) {
+  mode = nextMode;
+  $("loginTab").classList.toggle("active", mode === "login");
+  $("signupTab").classList.toggle("active", mode === "signup");
+  $("nicknameField").classList.toggle("hidden", mode !== "signup");
+  $("submitButton").textContent = mode === "login" ? "로그인" : "계정 만들기";
+  $("password").autocomplete = mode === "login" ? "current-password" : "new-password";
+  setMessage(authMessage, "");
+}
+$("loginTab").addEventListener("click", () => setAuthMode("login"));
+$("signupTab").addEventListener("click", () => setAuthMode("signup"));
+
+function explainError(error) {
+  const msg = String(error?.message || error || "알 수 없는 오류");
+  if (/Invalid login credentials/i.test(msg)) return "이메일 또는 비밀번호를 확인해 줘.";
+  if (/already registered/i.test(msg)) return "이미 가입된 이메일이야. 로그인 탭을 이용해 줘.";
+  if (/Password should be at least/i.test(msg)) return "비밀번호를 6자 이상 입력해 줘.";
+  if (/Email not confirmed/i.test(msg)) return "이메일 인증을 먼저 완료해 줘.";
+  if (/rate limit/i.test(msg)) return "요청이 너무 많아. 잠시 후 다시 시도해 줘.";
+  return msg;
+}
+async function loadAccount(user) {
+  currentUser = user;
+  authPanel.classList.add("hidden");
+  accountPanel.classList.remove("hidden");
+  $("accountEmail").textContent = user.email || "";
+  const [{ data: profile, error: profileError }, { data: ratings, error: ratingError }] = await Promise.all([
+    supabase.from("profiles").select("id,nickname,avatar_url").eq("id", user.id).maybeSingle(),
+    supabase.from("player_ratings").select("mode,elo,games_played,wins,draws,losses").eq("user_id", user.id)
+  ]);
+  if (profileError) console.warn("Profile load:", profileError);
+  if (ratingError) console.warn("Ratings load:", ratingError);
+  const nickname = profile?.nickname || user.user_metadata?.nickname || "철학자";
+  $("welcomeName").textContent = nickname;
+  $("newNickname").value = nickname;
+  const byMode = Object.fromEntries((ratings || []).map(r => [r.mode, r]));
+  const c = byMode.classic || { elo: 1200, games_played: 0, wins: 0, draws: 0, losses: 0 };
+  const i = byMode.ideology || { elo: 1200, games_played: 0, wins: 0, draws: 0, losses: 0 };
+  $("classicElo").textContent = c.elo;
+  $("classicRecord").textContent = `${c.games_played}전 · ${c.wins}승 ${c.draws}무 ${c.losses}패`;
+  $("ideologyElo").textContent = i.elo;
+  $("ideologyRecord").textContent = `${i.games_played}전 · ${i.wins}승 ${i.draws}무 ${i.losses}패`;
+  await loadLeaderboard();
+}
+async function loadLeaderboard() {
+  const body = $("leaderboardBody");
+  if (!supabase) return;
+  body.innerHTML = '<tr><td colspan="4" class="empty">불러오는 중…</td></tr>';
+  const { data, error } = await supabase
+    .from("player_ratings")
+    .select("user_id,elo,games_played,wins,draws,losses")
+    .eq("mode", "ideology")
+    .order("elo", { ascending: false })
+    .order("games_played", { ascending: true })
+    .limit(10);
+  if (error) {
+    body.innerHTML = '<tr><td colspan="4" class="empty">랭킹을 불러오지 못했어. SQL 설정과 RLS를 확인해 줘.</td></tr>';
+    console.warn(error);
+    return;
+  }
+  if (!data?.length) {
+    body.innerHTML = '<tr><td colspan="4" class="empty">아직 등록된 플레이어가 없어.</td></tr>';
+    return;
+  }
+  const ids = [...new Set(data.map(r => r.user_id))];
+  const { data: profiles, error: pError } = await supabase.from("profiles").select("id,nickname").in("id", ids);
+  if (pError) console.warn(pError);
+  const names = Object.fromEntries((profiles || []).map(p => [p.id, p.nickname]));
+  body.replaceChildren();
+  data.forEach((r, index) => {
+    const tr = document.createElement("tr");
+    [String(index + 1), names[r.user_id] || "철학자", String(r.elo), `${r.wins}승 ${r.draws}무 ${r.losses}패`].forEach(value => {
+      const td = document.createElement("td");
+      td.textContent = value;
+      tr.appendChild(td);
+    });
+    body.appendChild(tr);
+  });
+}
+$("authForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!supabase) {
+    setMessage(authMessage, "먼저 HTML의 Supabase URL과 공개용 키를 입력해 줘.", true);
+    return;
+  }
+  const email = $("email").value.trim();
+  const password = $("password").value;
+  const button = $("submitButton");
+  button.disabled = true;
+  setMessage(authMessage, mode === "login" ? "로그인 중…" : "계정을 만드는 중…");
+  try {
+    if (mode === "signup") {
+      const nickname = $("nickname").value.trim() || email.split("@")[0].slice(0, 24) || "철학자";
+      const { data, error } = await supabase.auth.signUp({
+        email, password, options: { data: { nickname }, emailRedirectTo: window.location.origin + window.location.pathname }
+      });
+      if (error) throw error;
+      if (data.session && data.user) {
+        setMessage(authMessage, "가입 완료! 계정을 불러오는 중…");
+        await loadAccount(data.user);
+      } else {
+        setMessage(authMessage, "가입 요청 완료! 받은 편지함에서 인증 메일을 확인한 뒤 로그인해 줘.");
+      }
+    } else {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      if (data.user) await loadAccount(data.user);
+      setMessage(authMessage, "");
+    }
+  } catch (error) {
+    setMessage(authMessage, explainError(error), true);
+  } finally {
+    button.disabled = false;
+  }
+});
+$("resetButton").addEventListener("click", async () => {
+  if (!supabase) return setMessage(authMessage, "먼저 Supabase URL과 공개용 키를 입력해 줘.", true);
+  const email = $("email").value.trim();
+  if (!email) return setMessage(authMessage, "비밀번호 재설정 메일을 받을 이메일을 먼저 입력해 줘.", true);
+  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + window.location.pathname });
+  if (error) return setMessage(authMessage, explainError(error), true);
+  setMessage(authMessage, "비밀번호 재설정 메일을 보냈어. 이메일과 Supabase 메일 설정을 확인해 줘.");
+});
+$("saveNickname").addEventListener("click", async () => {
+  if (!supabase || !currentUser) return;
+  const nickname = $("newNickname").value.trim();
+  if (!nickname || nickname.length > 24) return setMessage($("profileMessage"), "닉네임은 1~24자로 입력해 줘.", true);
+  const button = $("saveNickname");
+  button.disabled = true;
+  const { error } = await supabase.from("profiles").update({ nickname, updated_at: new Date().toISOString() }).eq("id", currentUser.id);
+  button.disabled = false;
+  if (error) return setMessage($("profileMessage"), "저장에 실패했어. SQL 설정과 RLS 정책을 확인해 줘.", true);
+  $("welcomeName").textContent = nickname;
+  setMessage($("profileMessage"), "닉네임을 저장했어.");
+  await loadLeaderboard();
+});
+$("logoutButton").addEventListener("click", async () => {
+  if (!supabase) return;
+  const { error } = await supabase.auth.signOut();
+  if (error) return setMessage($("profileMessage"), explainError(error), true);
+  currentUser = null;
+  accountPanel.classList.add("hidden");
+  authPanel.classList.remove("hidden");
+  setMessage(authMessage, "로그아웃했어.");
+});
+$("refreshBoard").addEventListener("click", loadLeaderboard);
+
+if (SUPABASE_URL.startsWith("https://") && SUPABASE_PUBLISHABLE_KEY && !SUPABASE_PUBLISHABLE_KEY.startsWith("YOUR_")) {
+  try {
+    supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+    connectionPill.textContent = "Supabase 연결 설정됨";
+    connectionPill.style.color = "var(--green)";
+    await loadLeaderboard();
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) await loadAccount(session.user);
+    supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user && session.user.id !== currentUser?.id) {
+        // Defer remote work outside the auth callback to avoid locking the auth client.
+        setTimeout(() => loadAccount(session.user), 0);
+      } else if (!session?.user) {
+        currentUser = null;
+        accountPanel.classList.add("hidden");
+        authPanel.classList.remove("hidden");
+      }
+    });
+  } catch (error) {
+    connectionPill.textContent = "연결 오류";
+    setMessage(authMessage, "Supabase 초기화에 실패했어. URL과 공개용 키를 확인해 줄.", true);
+    console.error(error);
+  }
+} else {
+  connectionPill.textContent = "연결 설정 필요";
+  setMessage(authMessage, "HTML 안의 SUPABASE_URL과 SUPABASE_PUBLISHABLE_KEY를 먼저 입력해 줘.");
+}
+</script>
+</body>
+</html>
