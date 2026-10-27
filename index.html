@@ -1,326 +1,70 @@
 <!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101114">
-<title>IDEOLOGY CHESS — 철학이 수를 두다</title>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101114"><link rel="icon" href="./favicon.ico"><title>IDEOLOGY CHESS — 철학이 수를 두다</title>
 <style>
-:root{color-scheme:dark;--bg:#101114;--panel:#191b20;--panel2:#20232a;--line:#30343d;--text:#f1f2f5;--muted:#a0a5b1;--gold:#d6b875;--green:#a8d5b5;--red:#ff9c9c}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#33303a 0,transparent 50%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
-.wrap{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:28px 0 60px}
-header{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:36px}
-.brand{font-size:13px;letter-spacing:.19em;color:var(--gold);font-weight:800}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.08em;font-weight:500;margin-top:3px}
-.pill{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:12px}
-.hero{max-width:760px;margin:0 auto 30px;text-align:center}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.22em;font-weight:700}
-h1{font-size:clamp(36px,7vw,66px);line-height:1.02;letter-spacing:-.055em;margin:14px 0 16px}
-.hero p{color:var(--muted);max-width:580px;margin:0 auto}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.82fr);gap:18px;align-items:start}
-.panel{background:linear-gradient(145deg,#1d2026,#15171b);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 16px 40px #0002}
-.panel h2{font-size:18px;margin:0 0 6px}.sub{font-size:13px;color:var(--muted);margin:0 0 18px}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#101114;padding:5px;border-radius:10px;margin-bottom:16px}
-.tabs button{border:0;background:transparent;color:var(--muted);border-radius:7px;padding:9px}.tabs button.active{background:var(--panel2);color:var(--text)}
-.field{display:block;margin:12px 0}.field span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
-input{width:100%;background:#101216;border:1px solid var(--line);border-radius:9px;padding:12px 13px;color:var(--text);outline:none}
-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px #d6b87520}
-.primary{width:100%;border:0;border-radius:9px;padding:12px 14px;background:var(--gold);color:#171512;font-weight:800;margin-top:8px}
-.secondary{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;padding:9px 12px}
-.note{font-size:12px;color:var(--muted);margin:14px 0 0}.message{margin-top:13px;font-size:13px;min-height:20px;color:var(--green);overflow-wrap:anywhere}.message.error{color:var(--red)}
-.hidden{display:none!important}.account-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}.avatar{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:#34302a;color:var(--gold);font-size:20px}
-.account-head strong{display:block;font-size:16px}.account-head small{display:block;color:var(--muted);overflow-wrap:anywhere}
-.rating-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.rating{background:#111318;border:1px solid var(--line);border-radius:12px;padding:15px}.rating span{display:block;color:var(--muted);font-size:12px}.rating strong{display:block;font-size:30px;letter-spacing:-.04em;margin:3px 0}.rating small{color:var(--muted);font-size:11px}
-.divider{height:1px;background:var(--line);margin:20px 0}.profile-row{display:flex;gap:8px}.profile-row input{min-width:0}.profile-row button{white-space:nowrap}
-.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:24px 0 12px}.section-title h2{font-size:17px;margin:0}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:600;background:#15171b}tr:last-child td{border-bottom:0}.empty{padding:20px;text-align:center;color:var(--muted)}
-footer{text-align:center;color:#747986;font-size:12px;margin-top:32px}
-@media(max-width:760px){.layout{grid-template-columns:1fr}.wrap{width:min(100% - 22px,560px);padding-top:18px}header{margin-bottom:28px}.panel{padding:18px}.hero{margin-bottom:24px}}
-.site-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.site-logo {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <header>
-    <div class="brand">IDEOLOGY CHESS<small>PHILOSOPHY MEETS STRATEGY</small></div>
-    <div class="pill" id="connectionPill">연결 설정 필요</div>
-  </header>
-
-  <section class="hero">
-    <div class="eyebrow">THINK. MOVE. CHALLENGE.</div>
-    <h1 class="site-title">
-  <img src="/favicon.ico" alt="" class="site-logo">
-  IDEOLOGY CHESS
-</h1>
-    <p>같은 체스판, 다른 사상. 먼저 계정을 만들고, 철학자들의 대결을 위한 프로필과 레이팅을 준비하자.</p>
-  </section>
-
-  <main class="layout">
-    <section class="panel" id="authPanel">
-      <h2>플레이어 입장</h2>
-      <p class="sub">이메일 계정으로 가입하거나 로그인해.</p>
-      <div class="tabs">
-        <button class="active" id="loginTab" type="button">로그인</button>
-        <button id="signupTab" type="button">회원가입</button>
-      </div>
-      <form id="authForm">
-        <label class="field hidden" id="nicknameField"><span>닉네임 (최대 24자)</span><input id="nickname" maxlength="24" autocomplete="nickname" placeholder="예: 아테네의 부엉이"></label>
-        <label class="field"><span>이메일</span><input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
-        <label class="field"><span>비밀번호</span><input id="password" type="password" autocomplete="current-password" minlength="6" required placeholder="6자 이상"></label>
-        <button class="primary" id="submitButton" type="submit">로그인</button>
-      </form>
-      <button class="secondary" id="resetButton" type="button" style="width:100%;margin-top:10px">비밀번호 재설정 이메일 보내기</button>
-      <p class="note">가입 시 이메일 확인이 필요할 수 있어. 실제 배포 전에 Supabase의 Site URL과 Redirect URLs를 설정해 줘.</p>
-      <div class="message" id="authMessage" role="status" aria-live="polite"></div>
-    </section>
-
-    <section class="panel hidden" id="accountPanel">
-      <div class="account-head">
-        <div class="avatar">♟</div>
-        <div><strong id="welcomeName">플레이어</strong><small id="accountEmail"></small></div>
-      </div>
-      <h2>내 레이팅</h2>
-      <p class="sub">시작 레이팅은 1200. 실제 대국 결과 반영은 다음 개발 단계에서 연결할 예정이야.</p>
-      <div class="rating-grid">
-        <div class="rating"><span>클래식</span><strong id="classicElo">1200</strong><small id="classicRecord">0전 · 0승 0무 0패</small></div>
-        <div class="rating"><span>이데올로기</span><strong id="ideologyElo">1200</strong><small id="ideologyRecord">0전 · 0승 0무 0패</small></div>
-      </div>
-      <div class="divider"></div>
-      <h2>닉네임 변경</h2>
-      <p class="sub">랭킹에 공개되는 이름이야. 이메일 주소는 공개 프로필에 표시하지 않아.</p>
-      <div class="profile-row"><input id="newNickname" maxlength="24" placeholder="새 닉네임"><button class="secondary" id="saveNickname" type="button">저장</button></div>
-      <div class="message" id="profileMessage" role="status" aria-live="polite"></div>
-      <div class="divider"></div>
-      <button class="secondary" id="logoutButton" type="button">로그아웃</button>
-    </section>
-
-    <section class="panel" id="leaderboardPanel">
-      <div class="section-title" style="margin-top:0"><h2>이데올로기 랭킹</h2><button class="secondary" id="refreshBoard" type="button">새로고침</button></div>
-      <p class="sub">현재 계정 데이터가 연결되면 전체 플레이어의 공개 레이팅을 불러와.</p>
-      <div class="table-wrap">
-        <table><thead><tr><th>#</th><th>플레이어</th><th>ELO</th><th>전적</th></tr></thead><tbody id="leaderboardBody"><tr><td colspan="4" class="empty">Supabase 연결 후 표시돼.</td></tr></tbody></table>
-      </div>
-      <div class="section-title"><h2>개발 로드맵</h2></div>
-      <div style="color:var(--muted);font-size:13px;display:grid;gap:8px">
-        <div>✓ 이메일 회원가입 및 로그인 UI</div>
-        <div>✓ 프로필·레이팅 테이블 연동 기반</div>
-        <div>○ 정식 체스 규칙과 기물 렌더링</div>
-        <div>○ 철학자별 능력·기물 조형</div>
-        <div>○ 서버 검증 기반 ELO 업데이트</div>
-        <div>○ 실시간 온라인 대전</div>
-      </div>
-    </section>
-  </main>
-  <footer>IDEOLOGY CHESS · 초기 인증/프로필 기반 버전</footer>
+:root{color-scheme:dark;--bg:#101114;--panel:#191b20;--panel2:#20232a;--line:#30343d;--text:#f1f2f5;--muted:#a0a5b1;--gold:#d6b875;--green:#a8d5b5;--red:#ff9c9c;--light:#e7dfcd;--dark:#777c88}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#33303a 0,transparent 50%),var(--bg);color:var(--text);font:15px/1.5 system-ui,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}.wrap{width:min(1240px,calc(100% - 24px));margin:auto;padding:18px 0 40px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:10px;color:var(--gold);font-weight:850;letter-spacing:.13em;font-size:13px}.brand img{width:38px;height:38px;object-fit:contain}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.07em;font-weight:500}.pill{border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted);font-size:11px}.hero{text-align:center;margin:0 auto 20px;max-width:850px}.eyebrow{color:var(--gold);font-size:11px;letter-spacing:.22em;font-weight:800}h1{font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacing:-.05em;margin:10px 0}.hero p,.sub{color:var(--muted);font-size:12px}.top-actions{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:14px}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;padding:9px 12px}.btn.primary{background:var(--gold);color:#171512;border-color:var(--gold);font-weight:800}.btn.active{border-color:var(--gold);color:var(--gold)}.main-grid{display:grid;grid-template-columns:minmax(300px,1.1fr) minmax(280px,.9fr);gap:15px;align-items:start}.panel{min-width:0;background:linear-gradient(145deg,#1d2026,#15171b);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 12px 34px #0002}.panel h2{font-size:17px;margin:0 0 4px}.game-head,.playerbar,.profile-line{display:flex;justify-content:space-between;align-items:center;gap:9px}.game-head{margin-bottom:10px}.mode-select{display:flex;gap:4px;background:#101114;padding:4px;border-radius:9px}.mode-select button{border:0;background:transparent;color:var(--muted);padding:6px 8px;border-radius:6px;font-size:11px}.mode-select button.active{background:#2a2d34;color:var(--gold)}.playerbar{background:#111318;border:1px solid var(--line);border-radius:9px;padding:8px 11px;margin:7px 0;font-size:12px}.playerbar.current{border-color:#d6b87599}.playername{font-weight:750}.side{font-size:10px;color:var(--muted)}.board-wrap{max-width:640px;margin:10px auto}.board{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));aspect-ratio:1;border:4px solid #302b27;border-radius:4px;overflow:hidden;user-select:none;touch-action:manipulation}.square{border:0;border-radius:0;position:relative;display:flex;align-items:center;justify-content:center;min-width:0;aspect-ratio:1;padding:0;font-size:clamp(26px,4.8vw,49px);line-height:1}.light{background:var(--light)}.dark{background:var(--dark)}.selected{box-shadow:inset 0 0 0 4px #e3c56b;background-image:linear-gradient(#e3c56b45,#e3c56b45)}.legal:after{content:"";width:23%;height:23%;border-radius:50%;background:#1e282d66;position:absolute}.capture:after{content:"";position:absolute;inset:4%;border:4px solid #a23d3d99;border-radius:50%}.last{background-image:linear-gradient(#d6b87542,#d6b87542)}.piece{position:relative;z-index:1;filter:drop-shadow(0 1px 1px #0006);font-family:"Segoe UI Symbol",serif}.piece.white{color:#fffdf6;text-shadow:0 1px 2px #222}.piece.black{color:#22242a;text-shadow:0 1px #fff5}.coord{position:absolute;z-index:2;left:3px;top:1px;font-size:9px;font-weight:800;color:#262626}.coord.rank{left:auto;top:auto;right:3px;bottom:1px;color:#f5f1e8}.game-status{background:#111318;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:12px;min-height:40px;margin-top:10px}.board-controls{display:flex;gap:6px;margin-top:9px}.board-controls .btn{flex:1;padding:8px 5px;font-size:12px}.promo{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-top:8px;font-size:12px;color:var(--muted)}.right-stack{display:grid;gap:13px}.philosopher-card,.ability,.move{background:#111318;border:1px solid var(--line);border-radius:10px;padding:10px}.philosopher-card{margin-top:8px}.philosopher-card p{color:var(--muted);font-size:12px;margin:7px 0 0}.ph-title{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:750}.ph-title span{font-size:10px;color:var(--gold)}.ability{margin-top:7px}.ability strong{display:block;font-size:12px}.ability small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.history{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;max-height:220px;overflow:auto}.move{font-size:12px;color:var(--muted);padding:6px 8px}.move b{color:var(--text);margin-right:5px}.auth-panel{margin-top:15px}.auth-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.field{display:block;margin:8px 0}.field span{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}input{width:100%;min-width:0;background:#101216;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--text)}.message{font-size:12px;color:var(--green);min-height:18px;margin-top:8px;overflow-wrap:anywhere}.message.error{color:var(--red)}.hidden{display:none!important}
+.screen{display:none}.screen.active{display:block}.login-shell{max-width:620px;margin:7vh auto 0}.dashboard{max-width:900px;margin:5vh auto 0}.dash-title{font-size:clamp(30px,5vw,48px);margin:8px 0}.rating-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.rating-card{background:#111318;border:1px solid var(--line);border-radius:13px;padding:18px}.rating-card strong{display:block;color:var(--muted);font-size:12px}.rating-card span{display:block;font-size:clamp(28px,4vw,40px);font-weight:850;color:var(--gold);margin-top:6px}.dashboard-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.dashboard-actions .btn{padding:12px 18px}.modal-backdrop{position:fixed;inset:0;background:#050609d9;display:flex;align-items:center;justify-content:center;padding:18px;z-index:20}.modal{width:min(620px,100%);max-height:min(82vh,780px);overflow:auto;background:#191b20;border:1px solid #48424a;border-radius:16px;padding:20px;box-shadow:0 20px 80px #0009}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.modal-head h2{margin:0;font-size:20px}.mode-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mode-card{text-align:left;padding:18px;border:1px solid var(--line);border-radius:12px;background:#111318;color:var(--text)}.mode-card:hover{border-color:var(--gold)}.mode-card strong{display:block;font-size:17px;color:var(--gold);margin-bottom:7px}.mode-card span{font-size:12px;color:var(--muted)}.ability-list{display:grid;gap:8px}.ability-row{background:#111318;border:1px solid var(--line);border-radius:10px;padding:12px}.ability-row strong{display:block;color:var(--gold);font-size:13px}.ability-row p{margin:4px 0 0;color:var(--muted);font-size:12px}.game-topbar{display:flex;justify-content:flex-end;gap:8px;margin:-5px 0 12px}.piece.skin-nietzsche{filter:drop-shadow(0 0 3px #e05b5b) drop-shadow(0 1px 1px #0007)}.piece.skin-socrates{filter:drop-shadow(0 0 3px #62c7d7) drop-shadow(0 1px 1px #0007)}.piece.skin-machiavelli{filter:drop-shadow(0 0 3px #c46b37) drop-shadow(0 1px 1px #0007)}.piece.skin-descartes{filter:drop-shadow(0 0 3px #6594ef) drop-shadow(0 1px 1px #0007)}.piece.skin-kant{filter:drop-shadow(0 0 3px #e4d38c) drop-shadow(0 1px 1px #0007)}.piece.skin-marx{filter:drop-shadow(0 0 3px #d74d58) drop-shadow(0 1px 1px #0007)}.piece.skin-plato{filter:drop-shadow(0 0 3px #a58ae8) drop-shadow(0 1px 1px #0007)}.piece.skin-schopenhauer{filter:drop-shadow(0 0 3px #8b9aa7) drop-shadow(0 1px 1px #0007)}
+@media(max-width:520px){.rating-grid,.mode-cards{grid-template-columns:1fr}.login-shell,.dashboard{margin-top:2vh}.modal{padding:14px}}footer{text-align:center;color:#747986;font-size:11px;margin-top:22px}@media(max-width:800px){.main-grid{grid-template-columns:1fr}.right-stack{grid-template-columns:1fr 1fr}.wrap{width:min(100% - 16px,620px)}}@media(max-width:520px){.right-stack{grid-template-columns:1fr}.panel{padding:12px}.square{font-size:clamp(27px,8vw,43px)}.brand{letter-spacing:.06em}.brand img{width:32px;height:32px}.game-head{align-items:flex-start;flex-direction:column}}
+</style></head><body><div class="wrap">
+<header><div class="brand"><img src="./favicon.ico" alt=""><div>IDEOLOGY CHESS<small>PHILOSOPHY MEETS STRATEGY</small></div></div><div class="pill" id="connectionPill">Supabase 연결 중</div></header>
+<section id="dashboardScreen" class="screen dashboard">
+<div class="hero"><div class="eyebrow">THINK. MOVE. CHALLENGE.</div><h1 class="dash-title">철학이 수를 두다.</h1><p>환영합니다, <strong id="dashboardName">플레이어</strong>. 다음 한 수로 사상을 증명해 보세요.</p></div>
+<div class="panel"><h2>나의 레이팅</h2><p class="sub">일반 체스와 이데올로기 체스의 레이팅은 별도로 표시돼.</p><div class="rating-grid"><div class="rating-card"><strong>일반 체스 ELO</strong><span id="classicElo">1200</span></div><div class="rating-card"><strong>이데올로기 체스 ELO</strong><span id="ideologyElo">1200</span></div></div><div class="dashboard-actions"><button class="btn primary" id="startMatchBtn">대국 시작</button><button class="btn" id="profileBtn">계정 설정</button><button class="btn" id="dashboardLogoutBtn">로그아웃</button></div><div id="profileSettings" class="hidden"><label class="field"><span>닉네임 변경</span><input id="newNickname" maxlength="24"></label><button class="btn" id="saveNickname" type="button">닉네임 저장</button><p class="sub" id="accountEmail"></p></div><p class="sub" id="ratingNote">현재 ELO는 초기값이야. 실제 대국 결과를 반영하는 레이팅 시스템은 아직 연결되지 않았어.</p></div>
+</section>
+<div id="modeModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modeModalTitle"><div class="modal"><div class="modal-head"><h2 id="modeModalTitle">어떤 대국을 시작할까?</h2><button class="btn" id="closeModeModal">닫기</button></div><div class="mode-cards"><button class="mode-card" id="chooseClassic"><strong>일반 체스</strong><span>표준 체스 규칙으로 대국해. 철학자 스킨과 특수 능력은 적용되지 않아.</span></button><button class="mode-card" id="chooseIdeology"><strong>이데올로기 체스</strong><span>양쪽에 철학자가 배정되고, 각 철학자의 고유 스킨과 능력 설명을 확인할 수 있어.</span></button></div></div></div>
+<div id="gameScreen" class="screen">
+<div class="game-topbar"><button class="btn" id="openAbilitiesBtn">철학자 능력</button><button class="btn" id="backDashboardBtn">대시보드</button></div>
+<main class="main-grid"><section class="panel"><div class="game-head"><h2>체스판</h2><div class="mode-select"><button class="active" id="whiteBottomBtn">백 아래</button><button id="blackBottomBtn">흑 아래</button></div></div>
+<div class="playerbar current" id="whiteBar"><div><div class="playername" id="whiteName">백 · 플레이어 1</div><div class="side" id="whitePhilosopher">클래식 모드</div></div><strong id="whiteTurn">차례</strong></div>
+<div class="board-wrap"><div class="board" id="board" role="grid" aria-label="체스판"></div></div>
+<div class="playerbar" id="blackBar"><div><div class="playername" id="blackName">흑 · 플레이어 2</div><div class="side" id="blackPhilosopher">클래식 모드</div></div><strong id="blackTurn"></strong></div>
+<div class="game-status" id="status" aria-live="polite">대국 준비 완료. 말을 선택한 다음 이동할 칸을 눌러.</div><div class="promo hidden" id="promotion"><span>폰 승격:</span><button class="btn" data-piece="q">퀸</button><button class="btn" data-piece="r">룩</button><button class="btn" data-piece="b">비숍</button><button class="btn" data-piece="n">나이트</button></div><div class="board-controls"><button class="btn" id="undoBtn">한 수 되돌리기</button><button class="btn" id="flipBtn">판 뒤집기</button><button class="btn" id="resignBtn">기권</button></div></section>
+<aside class="right-stack"><section class="panel"><h2>사상의 대결</h2><p class="sub">이데올로기 모드에서는 양쪽에 철학자가 무작위 배정돼. 오른쪽 위의 ‘철학자 능력’에서 능력 설명과 스킨을 확인할 수 있어.</p><div class="philosopher-card"><div class="ph-title"><strong id="whitePhiloCard">백 · 미배정</strong><span id="whiteAbilityState">능력 대기</span></div><p id="whitePhiloDesc">클래식 모드에서는 특수 능력을 사용하지 않아.</p></div><div class="philosopher-card"><div class="ph-title"><strong id="blackPhiloCard">흑 · 미배정</strong><span id="blackAbilityState">능력 대기</span></div><p id="blackPhiloDesc">이데올로기 모드로 새 대국을 시작해 봐.</p></div></section><section class="panel"><h2>기보</h2><p class="sub">체스 규칙 엔진이 합법 수와 체크를 판정해.</p><div class="history" id="history"><div class="move">아직 둔 수가 없어.</div></div><div style="height:1px;background:var(--line);margin:16px 0"></div><h2>현재 버전의 범위</h2><p class="sub">캐슬링, 앙파상, 폰 승격, 체크, 체크메이트와 무승부 판정을 지원해. 이 버전은 로컬 2인 대국이야. 실시간 온라인 대전과 서버 검증 기반 레이팅은 아직 연결되지 않았어.</p></section></aside></main>
 </div>
-
+<section id="loginScreen" class="screen active login-shell"><div class="panel auth-panel"><div class="hero"><div class="eyebrow">IDEOLOGY CHESS</div><h1>철학이 수를 두다.</h1><p>로그인하고 사상의 대국을 시작하세요.</p></div><div class="profile-line"><div><h2>플레이어 계정</h2><p class="sub">이메일 회원가입·로그인 및 Supabase 프로필 연결</p></div><small id="accountSummary" class="sub">로그인 후 대시보드에서 대국을 시작할 수 있어</small></div><div style="height:1px;background:var(--line);margin:12px 0"></div><div id="authArea"><div class="mode-select" style="display:inline-flex;margin-bottom:6px"><button id="loginTab" class="active">로그인</button><button id="signupTab">회원가입</button></div><form id="authForm" class="auth-grid"><label class="field hidden" id="nicknameField"><span>닉네임</span><input id="nickname" maxlength="24" placeholder="예: 아테네의 부엉이"></label><label class="field"><span>이메일</span><input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></label><label class="field"><span>비밀번호 (6자 이상)</span><input id="password" type="password" required minlength="6" autocomplete="current-password"></label><button class="btn primary" id="submitButton" type="submit">로그인</button><button class="btn" id="resetButton" type="button">비밀번호 재설정 메일</button></form></div><div id="signedArea" class="hidden"></div><div class="message" id="authMessage" role="status" aria-live="polite"></div></div></section>
+<div id="abilitiesModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="abilitiesTitle"><div class="modal"><div class="modal-head"><h2 id="abilitiesTitle">철학자 능력 도감</h2><button class="btn" id="closeAbilitiesBtn">닫기</button></div><p class="sub">이데올로기 모드의 능력 콘셉트와 기물 스킨을 소개해. 현재는 능력 설명과 스킨 표시가 적용되며, 능력의 실제 전투 효과는 후속 규칙 업데이트 대상이야.</p><div class="ability-list" id="abilityList"></div></div></div>
+<footer>IDEOLOGY CHESS · playable local prototype · 온라인 멀티플레이/랭크 반영은 서버 기능 추가 필요</footer></div>
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
-/*
-  1) Supabase Dashboard > Project Settings > API 에서 Project URL과 publishable key를 복사하세요.
-  2) 아래 두 값을 교체하세요.
-  공개용 publishable/anon 키만 사용하세요. service_role/secret 키는 절대 넣지 마세요.
-*/
-const SUPABASE_URL = "https://dwbykijpiksrvgstdvpf.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_ZreWIQ-dSoneJaK5Nkwtxw_T39vCm8B";
-
-const $ = (id) => document.getElementById(id);
-const connectionPill = $("connectionPill");
-const authPanel = $("authPanel");
-const accountPanel = $("accountPanel");
-const authMessage = $("authMessage");
-let mode = "login";
-let supabase = null;
-let currentUser = null;
-
-function setMessage(el, message, isError = false) {
-  el.textContent = message || "";
-  el.classList.toggle("error", Boolean(isError));
-}
-function setAuthMode(nextMode) {
-  mode = nextMode;
-  $("loginTab").classList.toggle("active", mode === "login");
-  $("signupTab").classList.toggle("active", mode === "signup");
-  $("nicknameField").classList.toggle("hidden", mode !== "signup");
-  $("submitButton").textContent = mode === "login" ? "로그인" : "계정 만들기";
-  $("password").autocomplete = mode === "login" ? "current-password" : "new-password";
-  setMessage(authMessage, "");
-}
-$("loginTab").addEventListener("click", () => setAuthMode("login"));
-$("signupTab").addEventListener("click", () => setAuthMode("signup"));
-
-function explainError(error) {
-  const msg = String(error?.message || error || "알 수 없는 오류");
-  if (/Invalid login credentials/i.test(msg)) return "이메일 또는 비밀번호를 확인해 줘.";
-  if (/already registered/i.test(msg)) return "이미 가입된 이메일이야. 로그인 탭을 이용해 줘.";
-  if (/Password should be at least/i.test(msg)) return "비밀번호를 6자 이상 입력해 줘.";
-  if (/Email not confirmed/i.test(msg)) return "이메일 인증을 먼저 완료해 줘.";
-  if (/rate limit/i.test(msg)) return "요청이 너무 많아. 잠시 후 다시 시도해 줘.";
-  return msg;
-}
-async function loadAccount(user) {
-  currentUser = user;
-  authPanel.classList.add("hidden");
-  accountPanel.classList.remove("hidden");
-  $("accountEmail").textContent = user.email || "";
-  const [{ data: profile, error: profileError }, { data: ratings, error: ratingError }] = await Promise.all([
-    supabase.from("profiles").select("id,nickname,avatar_url").eq("id", user.id).maybeSingle(),
-    supabase.from("player_ratings").select("mode,elo,games_played,wins,draws,losses").eq("user_id", user.id)
-  ]);
-  if (profileError) console.warn("Profile load:", profileError);
-  if (ratingError) console.warn("Ratings load:", ratingError);
-  const nickname = profile?.nickname || user.user_metadata?.nickname || "철학자";
-  $("welcomeName").textContent = nickname;
-  $("newNickname").value = nickname;
-  const byMode = Object.fromEntries((ratings || []).map(r => [r.mode, r]));
-  const c = byMode.classic || { elo: 1200, games_played: 0, wins: 0, draws: 0, losses: 0 };
-  const i = byMode.ideology || { elo: 1200, games_played: 0, wins: 0, draws: 0, losses: 0 };
-  $("classicElo").textContent = c.elo;
-  $("classicRecord").textContent = `${c.games_played}전 · ${c.wins}승 ${c.draws}무 ${c.losses}패`;
-  $("ideologyElo").textContent = i.elo;
-  $("ideologyRecord").textContent = `${i.games_played}전 · ${i.wins}승 ${i.draws}무 ${i.losses}패`;
-  await loadLeaderboard();
-}
-async function loadLeaderboard() {
-  const body = $("leaderboardBody");
-  if (!supabase) return;
-  body.innerHTML = '<tr><td colspan="4" class="empty">불러오는 중…</td></tr>';
-  const { data, error } = await supabase
-    .from("player_ratings")
-    .select("user_id,elo,games_played,wins,draws,losses")
-    .eq("mode", "ideology")
-    .order("elo", { ascending: false })
-    .order("games_played", { ascending: true })
-    .limit(10);
-  if (error) {
-    body.innerHTML = '<tr><td colspan="4" class="empty">랭킹을 불러오지 못했어. SQL 설정과 RLS를 확인해 줘.</td></tr>';
-    console.warn(error);
-    return;
-  }
-  if (!data?.length) {
-    body.innerHTML = '<tr><td colspan="4" class="empty">아직 등록된 플레이어가 없어.</td></tr>';
-    return;
-  }
-  const ids = [...new Set(data.map(r => r.user_id))];
-  const { data: profiles, error: pError } = await supabase.from("profiles").select("id,nickname").in("id", ids);
-  if (pError) console.warn(pError);
-  const names = Object.fromEntries((profiles || []).map(p => [p.id, p.nickname]));
-  body.replaceChildren();
-  data.forEach((r, index) => {
-    const tr = document.createElement("tr");
-    [String(index + 1), names[r.user_id] || "철학자", String(r.elo), `${r.wins}승 ${r.draws}무 ${r.losses}패`].forEach(value => {
-      const td = document.createElement("td");
-      td.textContent = value;
-      tr.appendChild(td);
-    });
-    body.appendChild(tr);
-  });
-}
-$("authForm").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  if (!supabase) {
-    setMessage(authMessage, "먼저 HTML의 Supabase URL과 공개용 키를 입력해 줘.", true);
-    return;
-  }
-  const email = $("email").value.trim();
-  const password = $("password").value;
-  const button = $("submitButton");
-  button.disabled = true;
-  setMessage(authMessage, mode === "login" ? "로그인 중…" : "계정을 만드는 중…");
-  try {
-    if (mode === "signup") {
-      const nickname = $("nickname").value.trim() || email.split("@")[0].slice(0, 24) || "철학자";
-      const { data, error } = await supabase.auth.signUp({
-        email, password, options: { data: { nickname }, emailRedirectTo: window.location.origin + window.location.pathname }
-      });
-      if (error) throw error;
-      if (data.session && data.user) {
-        setMessage(authMessage, "가입 완료! 계정을 불러오는 중…");
-        await loadAccount(data.user);
-      } else {
-        setMessage(authMessage, "가입 요청 완료! 받은 편지함에서 인증 메일을 확인한 뒤 로그인해 줘.");
-      }
-    } else {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) throw error;
-      if (data.user) await loadAccount(data.user);
-      setMessage(authMessage, "");
-    }
-  } catch (error) {
-    setMessage(authMessage, explainError(error), true);
-  } finally {
-    button.disabled = false;
-  }
-});
-$("resetButton").addEventListener("click", async () => {
-  if (!supabase) return setMessage(authMessage, "먼저 Supabase URL과 공개용 키를 입력해 줘.", true);
-  const email = $("email").value.trim();
-  if (!email) return setMessage(authMessage, "비밀번호 재설정 메일을 받을 이메일을 먼저 입력해 줘.", true);
-  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + window.location.pathname });
-  if (error) return setMessage(authMessage, explainError(error), true);
-  setMessage(authMessage, "비밀번호 재설정 메일을 보냈어. 이메일과 Supabase 메일 설정을 확인해 줘.");
-});
-$("saveNickname").addEventListener("click", async () => {
-  if (!supabase || !currentUser) return;
-  const nickname = $("newNickname").value.trim();
-  if (!nickname || nickname.length > 24) return setMessage($("profileMessage"), "닉네임은 1~24자로 입력해 줘.", true);
-  const button = $("saveNickname");
-  button.disabled = true;
-  const { error } = await supabase.from("profiles").update({ nickname, updated_at: new Date().toISOString() }).eq("id", currentUser.id);
-  button.disabled = false;
-  if (error) return setMessage($("profileMessage"), "저장에 실패했어. SQL 설정과 RLS 정책을 확인해 줘.", true);
-  $("welcomeName").textContent = nickname;
-  setMessage($("profileMessage"), "닉네임을 저장했어.");
-  await loadLeaderboard();
-});
-$("logoutButton").addEventListener("click", async () => {
-  if (!supabase) return;
-  const { error } = await supabase.auth.signOut();
-  if (error) return setMessage($("profileMessage"), explainError(error), true);
-  currentUser = null;
-  accountPanel.classList.add("hidden");
-  authPanel.classList.remove("hidden");
-  setMessage(authMessage, "로그아웃했어.");
-});
-$("refreshBoard").addEventListener("click", loadLeaderboard);
-
-if (SUPABASE_URL.startsWith("https://") && SUPABASE_PUBLISHABLE_KEY && !SUPABASE_PUBLISHABLE_KEY.startsWith("YOUR_")) {
-  try {
-    supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-    connectionPill.textContent = "Supabase 연결 설정됨";
-    connectionPill.style.color = "var(--green)";
-    await loadLeaderboard();
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session?.user) await loadAccount(session.user);
-    supabase.auth.onAuthStateChange((_event, session) => {
-      if (session?.user && session.user.id !== currentUser?.id) {
-        // Defer remote work outside the auth callback to avoid locking the auth client.
-        setTimeout(() => loadAccount(session.user), 0);
-      } else if (!session?.user) {
-        currentUser = null;
-        accountPanel.classList.add("hidden");
-        authPanel.classList.remove("hidden");
-      }
-    });
-  } catch (error) {
-    connectionPill.textContent = "연결 오류";
-    setMessage(authMessage, "Supabase 초기화에 실패했어. URL과 공개용 키를 확인해 줄.", true);
-    console.error(error);
-  }
-} else {
-  connectionPill.textContent = "연결 설정 필요";
-  setMessage(authMessage, "HTML 안의 SUPABASE_URL과 SUPABASE_PUBLISHABLE_KEY를 먼저 입력해 줘.");
-}
-</script>
-</body>
-</html>
+import { Chess } from "https://cdn.jsdelivr.net/npm/chess.js@1.4.0/+esm";
+const SUPABASE_URL="https://dwbykijpiksrvgstdvpf.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_ZreWIQ-dSoneJaK5Nkwtxw_T39vCm8B";
+const $=id=>document.getElementById(id), GLYPHS={w:{k:"♔",q:"♕",r:"♖",b:"♗",n:"♘",p:"♙"},b:{k:"♚",q:"♛",r:"♜",b:"♝",n:"♞",p:"♟"}};
+const PHILOSOPHERS=[
+{name:"프리드리히 니체",key:"nietzsche",desc:"가치 전복 — 기존의 가치를 뒤집고 새로운 가능성을 탐색한다.",ability:"초인 의지",abilityDesc:"게임 콘셉트: 한 번의 대국에서 불리한 위치의 기물을 중심으로 반격 기회를 찾는 능력.",skin:"붉은 균열빛 스킨"},
+{name:"소크라테스",key:"socrates",desc:"문답법 — 질문을 통해 상대의 논리와 빈틈을 드러낸다.",ability:"산파술",abilityDesc:"게임 콘셉트: 상대의 다음 위협을 읽고 수비적 선택을 돕는 능력.",skin:"청록색 지혜의 빛 스킨"},
+{name:"니콜로 마키아벨리",key:"machiavelli",desc:"책략 — 목적과 현실을 따져 판세를 계산한다.",ability:"군주의 책략",abilityDesc:"게임 콘셉트: 상대가 예상하기 어려운 전술적 압박을 설계하는 능력.",skin:"구리빛 책략 스킨"},
+{name:"르네 데카르트",key:"descartes",desc:"방법적 회의 — 확실한 정보와 의심할 대상을 구분한다.",ability:"명석판명",abilityDesc:"게임 콘셉트: 합법 수와 왕에 대한 위협을 더 명료하게 파악하는 능력.",skin:"푸른 기하학 스킨"},
+{name:"임마누엘 칸트",key:"kant",desc:"정언명령 — 보편화할 수 있는 원칙과 규칙을 중시한다.",ability:"정언명령",abilityDesc:"게임 콘셉트: 정해진 규칙을 지키며 안정적인 수비와 균형을 추구하는 능력.",skin:"금빛 질서 스킨"},
+{name:"카를 마르크스",key:"marx",desc:"계급투쟁 — 기물 하나보다 구조와 집단의 힘을 본다.",ability:"연대와 혁명",abilityDesc:"게임 콘셉트: 기물 간 협력과 다수의 압박을 활용하는 능력.",skin:"혁명의 붉은 스킨"},
+{name:"플라톤",key:"plato",desc:"이데아 — 눈앞의 현상 너머 이상적인 질서를 추구한다.",ability:"이데아의 형상",abilityDesc:"게임 콘셉트: 장기적인 배치와 중앙 통제를 중시하는 능력.",skin:"보랏빛 이데아 스킨"},
+{name:"아르투어 쇼펜하우어",key:"schopenhauer",desc:"의지와 표상 — 욕망과 반작용의 흐름을 읽는다.",ability:"의지의 부정",abilityDesc:"게임 콘셉트: 무리한 공격을 경계하고 상대의 압박을 역이용하는 능력.",skin:"은회색 그림자 스킨"}
+];
+let chess=new Chess(),mode="classic",flipped=false,selected=null,legalTargets=[],lastMove=null,pendingPromotion=null,gameOver=false,assigned={w:null,b:null},supabase=null,currentUser=null,authMode="login";
+function msg(t,error=false){$("authMessage").textContent=t||"";$("authMessage").classList.toggle("error",!!error)}
+function explain(e){let m=String(e?.message||e||"알 수 없는 오류");if(/Invalid login credentials/i.test(m))return"이메일 또는 비밀번호를 확인해 줘.";if(/already registered/i.test(m))return"이미 가입된 이메일이야. 로그인 탭에서 로그인해 줘.";if(/Email not confirmed/i.test(m))return"이메일 인증을 먼저 완료해 줘.";return m}
+function newGame(){chess.reset();selected=null;legalTargets=[];lastMove=null;pendingPromotion=null;gameOver=false;assigned=mode==="ideology"?{w:PHILOSOPHERS[Math.floor(Math.random()*8)],b:PHILOSOPHERS[Math.floor(Math.random()*8)]}:{w:null,b:null};$("promotion").classList.add("hidden");render();updatePhilosophers();updateStatus("새 대국 시작! 백부터 둬.");updateHistory()}
+function updatePhilosophers(){for(const c of["w","b"]){let side=c==="w"?"백":"흑",p=assigned[c];$(c==="w"?"whiteName":"blackName").textContent=`${side} · ${c==="w"?"플레이어 1":"플레이어 2"}`;$(c==="w"?"whitePhilosopher":"blackPhilosopher").textContent=p?`철학자: ${p.name}`:"클래식 모드";$(c==="w"?"whitePhiloCard":"blackPhiloCard").textContent=`${side} · ${p?p.name:"미배정"}`;$(c==="w"?"whitePhiloDesc":"blackPhiloDesc").textContent=p?p.desc:"클래식 모드에서는 특수 능력을 사용하지 않아.";$(c==="w"?"whiteAbilityState":"blackAbilityState").textContent=p?p.ability:"능력 없음"}}
+function updateStatus(text){let turn=chess.turn()==="w"?"백":"흑",s=text||`${turn} 차례`;if(!gameOver){if(chess.isCheckmate()){gameOver=true;s=`체크메이트! ${turn==="백"?"흑":"백"} 승리.`}else if(chess.isStalemate()){gameOver=true;s="스테일메이트! 무승부."}else if(chess.isThreefoldRepetition()){gameOver=true;s="포지션 3회 반복으로 무승부."}else if(chess.isInsufficientMaterial()){gameOver=true;s="기물 부족으로 무승부."}else if(chess.isDraw()){gameOver=true;s="무승부."}else if(chess.isCheck())s=`${turn} 차례 — 체크! 왕이 공격받고 있어.`}$("status").textContent=s;$("whiteBar").classList.toggle("current",!gameOver&&chess.turn()==="w");$("blackBar").classList.toggle("current",!gameOver&&chess.turn()==="b");$("whiteTurn").textContent=!gameOver&&chess.turn()==="w"?"차례":"";$("blackTurn").textContent=!gameOver&&chess.turn()==="b"?"차례":""}
+function sqName(f,r){return"abcdefgh"[f]+(r+1)}
+function render(){let el=$("board");el.replaceChildren();let matrix=chess.board();for(let row=0;row<8;row++)for(let col=0;col<8;col++){let f=flipped?7-col:col,r=flipped?row:7-row,sq=sqName(f,r),piece=matrix[7-r][f],b=document.createElement("button");b.type="button";b.className="square "+(((f+r)%2)?"dark":"light");b.setAttribute("role","gridcell");b.setAttribute("aria-label",sq);if(selected===sq)b.classList.add("selected");if(lastMove&&(lastMove.from===sq||lastMove.to===sq))b.classList.add("last");let target=legalTargets.find(m=>m.to===sq);if(target)b.classList.add(piece?"capture":"legal");if(piece){let sp=document.createElement("span");let philosopher=assigned[piece.color];sp.className="piece "+(piece.color==="w"?"white":"black")+(mode==="ideology"&&philosopher?" skin-"+philosopher.key:"");sp.textContent=GLYPHS[piece.color][piece.type];b.appendChild(sp)}if((!flipped&&f===0)||(flipped&&f===7)){let co=document.createElement("span");co.className="coord";co.textContent=r+1;b.appendChild(co)}if((!flipped&&r===0)||(flipped&&r===7)){let co=document.createElement("span");co.className="coord rank";co.textContent="abcdefgh"[f];b.appendChild(co)}b.addEventListener("click",()=>clickSquare(sq));el.appendChild(b)}}
+function clickSquare(sq){if(gameOver||pendingPromotion)return;let piece=chess.get(sq);if(selected){let moves=legalTargets.filter(m=>m.to===sq);if(moves.length){if(moves.some(m=>m.promotion)){pendingPromotion={from:selected,to:sq};$("promotion").classList.remove("hidden");return}doMove(selected,sq);return}}if(piece&&piece.color===chess.turn()){selected=sq;legalTargets=chess.moves({square:sq,verbose:true});render()}else{selected=null;legalTargets=[];render()}}
+function doMove(from,to,promotion){try{let m=chess.move({from,to,...(promotion?{promotion}:{})});if(!m)return;lastMove={from:m.from,to:m.to};selected=null;legalTargets=[];pendingPromotion=null;$("promotion").classList.add("hidden");render();updateStatus();updateHistory()}catch(e){console.warn(e);updateStatus("그 수는 둘 수 없어. 다른 칸을 선택해 봐.")}}
+function updateHistory(){let h=$("history");h.replaceChildren();let moves=chess.history();if(!moves.length){let d=document.createElement("div");d.className="move";d.textContent="아직 둔 수가 없어.";h.appendChild(d);return}for(let i=0;i<moves.length;i+=2){let d=document.createElement("div");d.className="move";let b=document.createElement("b");b.textContent=`${Math.floor(i/2)+1}.`;d.appendChild(b);d.append(document.createTextNode(moves[i]+(moves[i+1]?"  "+moves[i+1]:"")));h.appendChild(d)}h.scrollTop=h.scrollHeight}
+function showScreen(id){["loginScreen","dashboardScreen","gameScreen"].forEach(x=>$(x).classList.toggle("active",x===id));window.scrollTo({top:0,behavior:"smooth"})}
+function startMode(m){mode=m;$ ("modeModal").classList.add("hidden");showScreen("gameScreen");newGame()}
+$("startMatchBtn").onclick=()=>$("modeModal").classList.remove("hidden");$("closeModeModal").onclick=()=>$("modeModal").classList.add("hidden");$("chooseClassic").onclick=()=>startMode("classic");$("chooseIdeology").onclick=()=>startMode("ideology");$("backDashboardBtn").onclick=()=>showScreen("dashboardScreen");
+$("openAbilitiesBtn").onclick=()=>$("abilitiesModal").classList.remove("hidden");$("closeAbilitiesBtn").onclick=()=>$("abilitiesModal").classList.add("hidden");$("profileBtn").onclick=()=>$("profileSettings").classList.toggle("hidden");$("dashboardLogoutBtn").onclick=()=>$("logoutButton").click();
+$("whiteBottomBtn").onclick=()=>{flipped=false;$("whiteBottomBtn").classList.add("active");$("blackBottomBtn").classList.remove("active");render()};$("blackBottomBtn").onclick=()=>{flipped=true;$("blackBottomBtn").classList.add("active");$("whiteBottomBtn").classList.remove("active");render()};$("flipBtn").onclick=()=>{flipped=!flipped;$("whiteBottomBtn").classList.toggle("active",!flipped);$("blackBottomBtn").classList.toggle("active",flipped);render()};
+$("undoBtn").onclick=()=>{if(!chess.history().length)return;chess.undo();lastMove=null;selected=null;legalTargets=[];pendingPromotion=null;gameOver=false;$("promotion").classList.add("hidden");render();updateStatus("마지막 수를 되돌렸어.");updateHistory()};$("resignBtn").onclick=()=>{if(!gameOver){gameOver=true;updateStatus(`${chess.turn()==="w"?"백":"흑"}의 기권. ${chess.turn()==="w"?"흑":"백"} 승리.`)}};
+document.querySelectorAll("[data-piece]").forEach(b=>b.onclick=()=>{if(pendingPromotion)doMove(pendingPromotion.from,pendingPromotion.to,b.dataset.piece)});
+function setAuthMode(m){authMode=m;$("loginTab").classList.toggle("active",m==="login");$("signupTab").classList.toggle("active",m==="signup");$("nicknameField").classList.toggle("hidden",m!=="signup");$("submitButton").textContent=m==="login"?"로그인":"계정 만들기";msg("")}
+$("loginTab").onclick=()=>setAuthMode("login");$("signupTab").onclick=()=>setAuthMode("signup");
+async function loadAccount(user){currentUser=user;$ ("authArea").classList.add("hidden");$("signedArea").classList.remove("hidden");$("accountEmail").textContent=user.email||"";let nickname=user.user_metadata?.nickname||"철학자";let [p,r]=await Promise.all([supabase.from("profiles").select("nickname").eq("id",user.id).maybeSingle(),supabase.from("player_ratings").select("mode,elo").eq("user_id",user.id)]);if(p.data?.nickname)nickname=p.data.nickname;$("welcomeName").textContent=nickname;$("dashboardName").textContent=nickname;$("newNickname").value=nickname;let c=r.data?.find(x=>x.mode==="classic"),i=r.data?.find(x=>x.mode==="ideology");$("classicElo").textContent=c?.elo??1200;$("ideologyElo").textContent=i?.elo??1200;$("ratingSummary").textContent=`일반 ${c?.elo??1200}점 · 이데올로기 ${i?.elo??1200}점`;$("accountSummary").textContent=`로그인: ${nickname}`;showScreen("dashboardScreen")}
+$("authForm").onsubmit=async e=>{e.preventDefault();if(!supabase)return msg("Supabase 연결을 확인해 줘.",true);let email=$("email").value.trim(),password=$("password").value,b=$("submitButton");b.disabled=true;msg(authMode==="login"?"로그인 중…":"계정 생성 중…");try{if(authMode==="signup"){let nickname=$("nickname").value.trim()||email.split("@")[0].slice(0,24)||"철학자";let{data,error}=await supabase.auth.signUp({email,password,options:{data:{nickname},emailRedirectTo:location.origin+location.pathname}});if(error)throw error;if(data.session&&data.user){await loadAccount(data.user);msg("가입 완료!")}else msg("가입 요청 완료. 이메일 인증이 켜져 있다면 메일을 확인한 뒤 로그인해 줘.")}else{let{data,error}=await supabase.auth.signInWithPassword({email,password});if(error)throw error;if(data.user)await loadAccount(data.user);msg("로그인 완료!")}}catch(e){msg(explain(e),true)}finally{b.disabled=false}};
+$("resetButton").onclick=async()=>{let email=$("email").value.trim();if(!email)return msg("먼저 이메일을 입력해 줘.",true);let{error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});if(error)msg(explain(error),true);else msg("비밀번호 재설정 메일을 보냈어.")};
+$("saveNickname").onclick=async()=>{if(!currentUser)return;let nickname=$("newNickname").value.trim();if(!nickname||nickname.length>24)return msg("닉네임은 1~24자로 입력해 줘.",true);let{error}=await supabase.from("profiles").update({nickname,updated_at:new Date().toISOString()}).eq("id",currentUser.id);if(error)return msg("저장 실패. Supabase SQL과 RLS 정책을 확인해 줘.",true);$("welcomeName").textContent=nickname;$("dashboardName").textContent=nickname;$("accountSummary").textContent=`로그인: ${nickname}`;msg("닉네임 저장 완료.")};
+$("logoutButton").onclick=async()=>{let{error}=await supabase.auth.signOut();if(error)return msg(explain(error),true);currentUser=null;$("signedArea").classList.add("hidden");$("authArea").classList.remove("hidden");showScreen("loginScreen");$("accountSummary").textContent="로그인 후 대시보드에서 대국을 시작할 수 있어";msg("로그아웃했어.")};
+const abilityList=$("abilityList");PHILOSOPHERS.forEach(p=>{let row=document.createElement("div");row.className="ability-row";let title=document.createElement("strong");title.textContent=p.name+" · "+p.ability;let desc=document.createElement("p");desc.textContent=p.abilityDesc+" 기물 스킨: "+p.skin+".";row.append(title,desc);abilityList.appendChild(row)});
+try{supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);$("connectionPill").textContent="Supabase 설정 완료";$("connectionPill").style.color="var(--green)";let{data:{session}}=await supabase.auth.getSession();if(session?.user)await loadAccount(session.user);supabase.auth.onAuthStateChange((_e,s)=>{if(s?.user&&s.user.id!==currentUser?.id)setTimeout(()=>loadAccount(s.user),0);else if(!s?.user&&currentUser){currentUser=null;$("signedArea").classList.add("hidden");$("authArea").classList.remove("hidden");showScreen("loginScreen")}})}catch(e){$("connectionPill").textContent="Supabase 연결 오류";msg("Supabase 초기화 실패: URL과 공개용 키를 확인해 줘.",true);console.error(e)}
+newGame();
+</script></body></html>
